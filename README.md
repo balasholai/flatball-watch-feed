@@ -11,8 +11,9 @@ Embeds only: the feed stores links and metadata. Nothing downloads or re-hosts v
 
 1. **Create a public GitHub repo** named `ufp-watch-feed` and push this folder's
    contents to its root (`videos.json`, `config.json`, `scripts/`, `.github/`).
-   It must be public so the app can read the file without credentials.
-   (If this folder also lives inside the app repo, it's fine to keep a copy there.)
+   It must be public so the app can read the file without credentials — which
+   is why this is its own repo and not a folder inside the app, which is
+   private. The Action also only runs from a repository root.
 
 2. **Create a YouTube Data API key**
    - Go to console.cloud.google.com → create a project (e.g. "UFP feed").
@@ -26,10 +27,13 @@ Embeds only: the feed stores links and metadata. Nothing downloads or re-hosts v
 4. **Run it once**: repo → Actions → "Update Watch feed" → Run workflow. Check the
    log: it lists every skipped video with a reason and every added one.
 
-5. **Point the app at the feed**: in `Core/Content/VideoFeedStore.swift` set
-   ```swift
-   static let remoteFeedURL: URL? = URL(string: "https://raw.githubusercontent.com/<your-username>/ufp-watch-feed/main/videos.json")
+5. **Point the app at the feed**: in the Flutter app's
+   `lib/core/content/video_feed_store.dart` set
+   ```dart
+   static const String? remoteFeedUrl =
+       'https://raw.githubusercontent.com/<your-username>/ufp-watch-feed/main/videos.json';
    ```
+   It is `null` today, so the app uses only its bundled copy.
 
 ## Tuning (edit `config.json`, no code changes)
 
@@ -49,7 +53,10 @@ To fix a wrong category or title, just edit `videos.json`; the script never rewr
 
 ## Keeping the app's offline copy in sync
 
-This `videos.json` is the source of truth. Before each app release, run `./scripts/sync-content.sh` from the app project root to copy it into the app bundle (`--check` just reports whether they differ).
+This `videos.json` is the source of truth. Before each app release, run
+`tool/sync-content.sh` from the Flutter app's root to copy it into
+`assets/content/videos.json` (`--check` only reports whether they differ). The
+bundled copy is what the app shows offline and on first launch.
 
 ## Local run
 
