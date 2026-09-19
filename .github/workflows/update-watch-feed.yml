@@ -1,0 +1,44 @@
+name: Update Watch feed
+
+on:
+  schedule:
+    - cron: "30 1 * * *"   # every day at 07:00 IST (01:30 UTC)
+  workflow_dispatch:        # "Run workflow" button for manual runs
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-watch-feed
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run offline tests
+        run: python scripts/test_update_feed.py
+
+      - name: Fetch new videos
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/update_feed.py
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- videos.json; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add videos.json
+          git commit -m "Update Watch feed $(date -u +%Y-%m-%d)"
+          git push

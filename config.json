@@ -1,0 +1,116 @@
+{
+  "_comment": "Rules for the daily Watch feed update. Edit this file, not the script. Channels may override maxAgeDays, minDurationSeconds, maxDurationSeconds, and set requireKeywords=false for ultimate-only channels.",
+  "timezone": "Asia/Kolkata",
+  "maxFeedSize": 50,
+  "maxNewPerRun": 3,
+  "maxNewPerChannelPerRun": 1,
+  "maxAgeDays": 14,
+  "protectRecentDays": 7,
+  "minDurationSeconds": 20,
+  "maxDurationSeconds": 1200,
+  "channels": [
+    {
+      "name": "UFA",
+      "handle": "@watchUFAtv",
+      "defaultCategory": "highlight"
+    },
+    {
+      "name": "Ultiworld",
+      "handle": "@ultiworld",
+      "defaultCategory": "highlight"
+    },
+    {
+      "name": "WFDF",
+      "handle": "@WorldFlyingDiscFederation",
+      "defaultCategory": "highlight"
+    },
+    {
+      "name": "USA Ultimate",
+      "username": "usaultimate",
+      "defaultCategory": "highlight"
+    },
+    {
+      "name": "India Ultimate",
+      "channelId": "UCuzS5hNH7SOHI_a91DqNYFQ",
+      "defaultCategory": "highlight",
+      "requireKeywords": false,
+      "maxAgeDays": 45
+    },
+    {
+      "name": "Off-Season Ultimate",
+      "handle": "@offseasonultimate",
+      "defaultCategory": "highlight",
+      "requireKeywords": false,
+      "maxAgeDays": 45,
+      "minDurationSeconds": 10
+    }
+  ],
+  "requireAnyKeyword": [
+    "ultimate",
+    "frisbee",
+    "disc",
+    "callahan",
+    "layout",
+    "huck",
+    "ufa",
+    "wfdf",
+    "ultiworld",
+    "usau"
+  ],
+  "excludeKeywords": [
+    "full game",
+    "full broadcast",
+    "livestream",
+    "live stream",
+    "podcast",
+    "press conference",
+    "interview",
+    "trailer",
+    "announcement",
+    "giveaway",
+    "merch",
+    "tickets",
+    "replay"
+  ],
+  "categoryKeywords": {
+    "strategy": [
+      "how to",
+      "tutorial",
+      "explained",
+      "breakdown",
+      "strategy",
+      "film study",
+      "drill",
+      "tips",
+      "offense",
+      "defense",
+      "stack",
+      "zone",
+      "cutting",
+      "throwing",
+      "coaching",
+      "lesson"
+    ],
+    "play": [
+      "callahan",
+      "layout",
+      "sky",
+      "greatest",
+      "catch of",
+      "play of",
+      "block of",
+      "grab",
+      "bid"
+    ],
+    "highlight": [
+      "highlights",
+      "top 10",
+      "top ten",
+      "recap",
+      "best of",
+      "mixtape",
+      "week"
+    ]
+  },
+  "blockedVideoIds": []
+}
