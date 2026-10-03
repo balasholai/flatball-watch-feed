@@ -1,8 +1,8 @@
 {
-  "_comment": "Rules for the daily Watch feed update. Edit this file, not the script. Channels may override maxAgeDays, minDurationSeconds, maxDurationSeconds, and set requireKeywords=false for ultimate-only channels.",
+  "_comment": "Rules for the daily Watch feed update. Edit this file, not the script. Channels may override maxAgeDays, minDurationSeconds, maxDurationSeconds, maxDurationSecondsByCategory and excludeKeywords, and set requireKeywords=false for ultimate-only channels.",
   "timezone": "Asia/Kolkata",
   "maxFeedSize": 50,
-  "maxNewPerRun": 3,
+  "maxNewPerRun": 5,
   "maxNewPerChannelPerRun": 1,
   "maxAgeDays": 14,
   "protectRecentDays": 7,
@@ -77,19 +77,52 @@
       "how to",
       "tutorial",
       "explained",
+      "explainer",
       "breakdown",
+      "break down",
       "strategy",
+      "tactics",
       "film study",
+      "film review",
       "drill",
+      "drills",
       "tips",
+      "technique",
+      "fundamentals",
+      "masterclass",
+      "clinic",
+      "workshop",
+      "lesson",
+      "coaching",
+      "coach",
       "offense",
+      "offence",
       "defense",
+      "defence",
       "stack",
       "zone",
       "cutting",
+      "cutter",
+      "handler",
       "throwing",
-      "coaching",
-      "lesson"
+      "throws",
+      "flick",
+      "backhand",
+      "hammer",
+      "scoober",
+      "pivot",
+      "footwork",
+      "break the mark",
+      "force",
+      "poach",
+      "switch",
+      "reset",
+      "dump",
+      "endzone",
+      "set play",
+      "mark",
+      "pull",
+      "practice plan"
     ],
     "play": [
       "callahan",
@@ -100,7 +133,9 @@
       "play of",
       "block of",
       "grab",
-      "bid"
+      "bid",
+      "huck of",
+      "point of"
     ],
     "highlight": [
       "highlights",
@@ -112,5 +147,18 @@
       "week"
     ]
   },
-  "blockedVideoIds": []
+  "blockedVideoIds": [],
+  "maxNewPerCategoryPerRun": {
+    "strategy": 3,
+    "play": 1,
+    "highlight": 2
+  },
+  "minPerCategory": {
+    "strategy": 14,
+    "play": 8,
+    "highlight": 14
+  },
+  "maxDurationSecondsByCategory": {
+    "strategy": 2700
+  }
 }

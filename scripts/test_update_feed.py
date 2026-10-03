@@ -101,14 +101,68 @@ class RunTests(unittest.TestCase):
     def test_limits_and_trim(self):
         self.config["maxFeedSize"] = 11
         self.config["maxNewPerChannelPerRun"] = 5
+        self.config["minPerCategory"] = {}  # floors tested separately
         items = [video(f"BBBBBBBBBB{i}", f"Ultimate highlights week {i}",
                        published=f"2026-09-1{i}T00:00:00Z") for i in range(5)]
         client = FakeClient({"@watchUFAtv": ("UFA", items)})
         new_feed, added, removed = uf.run(client, self.config, self.feed, NOW)
-        self.assertEqual(len(added), 3)                       # maxNewPerRun
+        # Five eligible highlights, but highlight is capped at 2 a run. The old
+        # behaviour took maxNewPerRun of whatever arrived first, which is how
+        # highlights came to outnumber strategy better than two to one.
+        self.assertEqual(len(added), 2)
+        self.assertTrue(all(a["category"] == "highlight" for a in added))
         self.assertEqual(len(new_feed["videos"]), 11)         # trimmed to cap
         self.assertTrue(all(r["dateAdded"] < "2026-09-10" for r in removed))  # recent ones protected
         self.assertEqual(uf.validate(new_feed), [])
+
+    def test_strategy_keeps_its_slots_when_highlights_flood_in(self):
+        """The point of the quotas: a day of highlight uploads plus one coaching
+        video must not spend every slot on highlights."""
+        self.config["maxNewPerChannelPerRun"] = 9
+        self.config["channels"] = [
+            {"name": "UFA", "handle": "@watchUFAtv", "defaultCategory": "highlight"},
+            {"name": "Coach", "handle": "@coach", "defaultCategory": "strategy"},
+        ]
+        floods = [video(f"DDDDDDDDDD{i}", f"Ultimate highlights week {i}",
+                        published=f"2026-09-1{i}T00:00:00Z") for i in range(5)]
+        coaching = [video("EEEEEEEEEE1", "How to break the mark, explained",
+                          published="2026-09-16T00:00:00Z")]
+        client = FakeClient({"@watchUFAtv": ("UFA", floods), "@coach": ("Coach", coaching)})
+        _, added, _ = uf.run(client, self.config, self.feed, NOW)
+        by_category = {a["category"] for a in added}
+        self.assertIn("strategy", by_category)
+        self.assertEqual(sum(a["category"] == "highlight" for a in added), 2)
+
+    def test_strategy_may_run_long(self):
+        """Film study routinely passes 20 minutes. Under the single old ceiling
+        it was rejected before anything asked what category it was."""
+        long_strategy = video("FFFFFFFFFF1", "Zone defence breakdown: film study", duration="PT35M")
+        long_highlight = video("FFFFFFFFFF2", "Ultimate highlights week 9", duration="PT35M")
+        self.assertIsNone(uf.reject_reason(long_strategy, self.config, NOW, set(), "strategy"))
+        self.assertIn("too long", uf.reject_reason(long_highlight, self.config, NOW, set(), "highlight"))
+        # Before a category is known the ceiling must be the loosest one, or a
+        # long strategy video never survives to be categorised at all.
+        self.assertIsNone(uf.reject_reason(long_strategy, self.config, NOW, set(), None))
+
+    def test_trim_respects_category_floors(self):
+        videos = ([{"id": f"s{i}", "category": "strategy", "dateAdded": "2026-01-01"} for i in range(3)]
+                  + [{"id": f"h{i}", "category": "highlight", "dateAdded": "2026-02-01"} for i in range(7)])
+        kept, removed = uf.trim_feed(videos, max_size=5, protect_since="2026-09-01",
+                                     min_per_category={"strategy": 3})
+        self.assertEqual(sum(v["category"] == "strategy" for v in kept), 3)
+        self.assertEqual(len(kept), 5)
+        # Strategy is the OLDEST here, so an oldest-first trim would have taken
+        # all of it; the floor is what stops that.
+        self.assertTrue(all(v["category"] == "highlight" for v in removed))
+
+    def test_floors_never_exceed_the_feed(self):
+        """A floor that cannot be honoured must not loop or overfill: the trim
+        stops when everything left is protected, even above max_size."""
+        videos = [{"id": f"s{i}", "category": "strategy", "dateAdded": "2026-01-01"} for i in range(4)]
+        kept, removed = uf.trim_feed(videos, max_size=2, protect_since="2026-09-01",
+                                     min_per_category={"strategy": 10})
+        self.assertEqual(len(kept), 4)
+        self.assertEqual(removed, [])
 
     def test_india_channel_overrides(self):
         # Hindi title without English keywords, a short clip, and a month-old upload

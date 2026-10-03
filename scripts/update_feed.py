@@ -19,6 +19,7 @@ Standard library only (Python 3.9+).
 from __future__ import annotations
 
 import argparse
+import collections
 import datetime as dt
 import json
 import os
@@ -35,7 +36,8 @@ YOUTUBE_ID = re.compile(r"^[A-Za-z0-9_-]{11}$")
 VALID_CATEGORIES = {"play", "highlight", "strategy"}
 VALID_PLATFORMS = {"youtube", "instagram"}
 # Settings a channel entry in config.json may override.
-CHANNEL_OVERRIDES = ("maxAgeDays", "minDurationSeconds", "maxDurationSeconds")
+CHANNEL_OVERRIDES = ("maxAgeDays", "minDurationSeconds", "maxDurationSeconds",
+                     "maxDurationSecondsByCategory", "excludeKeywords")
 
 
 def rules_for_channel(config: dict, channel: dict) -> dict:
@@ -155,7 +157,21 @@ def categorize(title: str, description: str, config: dict, default: str) -> str:
     return default if default in VALID_CATEGORIES else "highlight"
 
 
-def reject_reason(item: dict, config: dict, now: dt.datetime, known_ids: set[str]) -> str | None:
+def max_duration_for(config: dict, category: str | None) -> int:
+    """Strategy earns a longer ceiling than the rest: film study and breakdowns
+    routinely run past the 20 minutes that suits a highlight reel, and the old
+    single cap silently rejected exactly the category the feed was short of."""
+    default = config.get("maxDurationSeconds", 1200)
+    if category is None:
+        # Pre-categorisation: be permissive, or a long strategy video would be
+        # thrown out before anyone asked what it was.
+        by_category = config.get("maxDurationSecondsByCategory", {}).values()
+        return max([default, *by_category]) if by_category else default
+    return config.get("maxDurationSecondsByCategory", {}).get(category, default)
+
+
+def reject_reason(item: dict, config: dict, now: dt.datetime, known_ids: set[str],
+                  category: str | None = None) -> str | None:
     video_id = item["id"]
     snippet, details, status = item.get("snippet", {}), item.get("contentDetails", {}), item.get("status", {})
     title = snippet.get("title", "")
@@ -181,8 +197,9 @@ def reject_reason(item: dict, config: dict, now: dt.datetime, known_ids: set[str
         return "unknown duration"
     if duration < config.get("minDurationSeconds", 20):
         return "too short"
-    if duration > config.get("maxDurationSeconds", 1200):
-        return "too long"
+    ceiling = max_duration_for(config, category)
+    if duration > ceiling:
+        return f"too long (over {ceiling}s for {category or 'any category'})"
     if contains_any(text, config.get("excludeKeywords", [])):
         return "excluded keyword"
     required = config.get("requireAnyKeyword", [])
@@ -212,16 +229,32 @@ def to_feed_entry(item: dict, channel_title: str, category: str, today: str, tak
     return {k: v for k, v in entry.items() if v is not None or k == "durationSeconds"}
 
 
-def trim_feed(videos: list[dict], max_size: int, protect_since: str) -> tuple[list[dict], list[dict]]:
-    """Keep newest; never drop entries with keep=true or added on/after protect_since."""
+def trim_feed(videos: list[dict], max_size: int, protect_since: str,
+              min_per_category: dict | None = None) -> tuple[list[dict], list[dict]]:
+    """Keep newest. Never drop an entry with keep=true, one added on or after
+    protect_since, or one whose category is already down to its floor.
+
+    The floors are what stop the feed drifting to whatever the busiest channels
+    publish. Highlight channels upload most days and coaching channels upload
+    most weeks, so without a floor the oldest-first trim grinds strategy out of
+    the feed over a couple of months, however well the per-run quotas worked.
+    """
     ordered = sorted(videos, key=lambda v: v.get("dateAdded", ""), reverse=True)
+    floors = min_per_category or {}
     removed: list[dict] = []
     while len(ordered) > max_size:
+        counts = collections.Counter(v.get("category") for v in ordered)
         for index in range(len(ordered) - 1, -1, -1):
             candidate = ordered[index]
-            if not candidate.get("keep") and candidate.get("dateAdded", "") < protect_since:
-                removed.append(ordered.pop(index))
-                break
+            if candidate.get("keep"):
+                continue
+            if candidate.get("dateAdded", "") >= protect_since:
+                continue
+            category = candidate.get("category")
+            if counts.get(category, 0) <= floors.get(category, 0):
+                continue
+            removed.append(ordered.pop(index))
+            break
         else:
             break  # everything left is protected
     return ordered, removed
@@ -279,28 +312,43 @@ def run(client, config: dict, feed: dict, now: dt.datetime) -> tuple[dict, list[
         rules = rules_for_channel(config, channel)
         accepted = 0
         for item in sorted(items, key=lambda i: i["snippet"].get("publishedAt", ""), reverse=True):
-            reason = reject_reason(item, rules, now, known_youtube_ids)
+            snippet = item["snippet"]
+            # Categorise FIRST. The category decides the duration ceiling and
+            # which per-run quota the video competes for, so deciding it after
+            # the cap -- as this used to -- let the busiest channels take every
+            # slot before anyone asked what the videos were.
+            category = categorize(snippet.get("title", ""), snippet.get("description", ""),
+                                  config, channel.get("defaultCategory", "highlight"))
+            reason = reject_reason(item, rules, now, known_youtube_ids, category)
             if reason:
-                print(f"  skip [{label}] {item['snippet'].get('title', '')[:60]!r}: {reason}")
+                print(f"  skip [{label}] {snippet.get('title', '')[:60]!r}: {reason}")
                 continue
             if accepted >= config.get("maxNewPerChannelPerRun", 1):
                 break
-            candidates.append((item["snippet"].get("publishedAt", ""), item, channel_title,
-                               channel.get("defaultCategory", "highlight")))
+            candidates.append((snippet.get("publishedAt", ""), item, channel_title, category))
             accepted += 1
 
+    # Reserved slots per category. Without these the fill below is purely
+    # newest-first, which is why the feed ran 7 highlights to 3 strategy.
+    quotas = config.get("maxNewPerCategoryPerRun", {})
+    taken_per_category: collections.Counter = collections.Counter()
     added: list[dict] = []
-    for _, item, channel_title, default in sorted(candidates, key=lambda c: c[0], reverse=True):
+    for _, item, channel_title, category in sorted(candidates, key=lambda c: c[0], reverse=True):
         if len(added) >= config.get("maxNewPerRun", 3):
             break
-        snippet = item["snippet"]
-        category = categorize(snippet.get("title", ""), snippet.get("description", ""), config, default)
+        quota = quotas.get(category)
+        if quota is not None and taken_per_category[category] >= quota:
+            print(f"  hold [{category}] {item['snippet'].get('title', '')[:60]!r}: "
+                  f"{category} is full for this run ({quota})")
+            continue
         entry = to_feed_entry(item, channel_title, category, today, taken_slugs)
         taken_slugs.add(entry["id"])
         known_youtube_ids.add(item["id"])
+        taken_per_category[category] += 1
         added.append(entry)
 
-    videos, removed = trim_feed(videos + added, config.get("maxFeedSize", 50), protect_since)
+    videos, removed = trim_feed(videos + added, config.get("maxFeedSize", 50), protect_since,
+                                config.get("minPerCategory"))
     changed = bool(added or removed or len(videos) != len(feed.get("videos", [])))
     new_feed = {
         "version": local_now.strftime("%Y.%m.%d") if changed else feed.get("version", local_now.strftime("%Y.%m.%d")),

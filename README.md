@@ -39,10 +39,13 @@ Embeds only: the feed stores links and metadata. Nothing downloads or re-hosts v
 
 | Setting | What it does |
 |---|---|
-| `channels` | Trusted channels, by `handle`, `username` or `channelId`, with a `defaultCategory`. Each can override `maxAgeDays`, `minDurationSeconds`, `maxDurationSeconds`, and set `requireKeywords: false` for ultimate-only channels (used for India Ultimate and Off-Season Ultimate, whose titles may be in Hindi or hashtags only) |
+| `channels` | Trusted channels, by `handle`, `username` or `channelId`, with a `defaultCategory`. Each can override `maxAgeDays`, `minDurationSeconds`, `maxDurationSeconds`, `maxDurationSecondsByCategory` and `excludeKeywords`, and set `requireKeywords: false` for ultimate-only channels (used for India Ultimate and Off-Season Ultimate, whose titles may be in Hindi or hashtags only). A channel that does not resolve is logged as `! channel not found` and skipped — a wrong handle costs nothing but a log line |
 | `maxNewPerRun` / `maxNewPerChannelPerRun` | How many videos can be added per day, overall and per channel |
+| `maxNewPerCategoryPerRun` | **Reserved slots per category per day.** Highlight channels upload most days and coaching channels upload most weeks, so without this the newest-first fill gives every slot to highlights. Strategy holds 3, play 1, highlight 2 — an unused strategy slot is simply not filled rather than handed to a highlight |
+| `minPerCategory` | **Floors inside `maxFeedSize`.** The trim drops oldest-first, which over a couple of months grinds the slow-publishing category out of the feed however well the per-run quotas worked. A category at its floor is not trimmed |
 | `maxAgeDays` | Only consider uploads newer than this |
 | `min/maxDurationSeconds` | Skips tiny clips and full-game streams |
+| `maxDurationSecondsByCategory` | A longer ceiling for one category. Strategy gets 45 minutes: film study and breakdowns routinely pass the 20 minutes that suits a highlight reel, and a single ceiling silently rejected exactly the category the feed was short of. Before a video is categorised the loosest ceiling applies, so nothing is thrown out before anyone asks what it is |
 | `requireAnyKeyword` / `excludeKeywords` | Must mention ultimate; skips streams, podcasts, promos |
 | `categoryKeywords` | Title/description words that pick Strategy, Highlight or Play (checked in that order) |
 | `blockedVideoIds` | YouTube ids to remove now and never add again |
@@ -64,6 +67,30 @@ bundled copy is what the app shows offline and on first launch.
 python scripts/test_update_feed.py                           # offline tests
 YOUTUBE_API_KEY=... python scripts/update_feed.py --dry-run  # preview without writing
 ```
+
+## Getting the category mix you want
+
+A video's category is decided by `categoryKeywords` against its title and
+description, falling back to the channel's `defaultCategory`. Two things follow:
+
+- **A category needs a source.** Quotas reserve slots; they cannot invent
+  videos. Every channel in `config.json` today is a broadcaster with
+  `defaultCategory: highlight`, so strategy only appears when a broadcaster
+  happens to publish a tutorial. For a reliable strategy feed, add a coaching
+  channel with `defaultCategory: "strategy"`.
+- **`excludeKeywords` applies to strategy too.** `interview` is on that list,
+  which also blocks a coaching interview. If you add a channel whose good
+  content is framed that way, override `excludeKeywords` on that channel rather
+  than loosening it for everyone.
+
+Check a change before trusting it:
+
+```bash
+YOUTUBE_API_KEY=... python scripts/update_feed.py --dry-run
+```
+
+The log prints every candidate with its verdict — `skip` with a reason, `hold`
+when a category is full for the run, `+` when added.
 
 ## Good to know
 
