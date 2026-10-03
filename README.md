@@ -1,6 +1,6 @@
 # UFP Watch feed
 
-The hosted `videos.json` for Ultimate Frisbee Pro's Watch tab. A GitHub Action runs
+The hosted `videos.json` for Flatball.io's Watch tab. A GitHub Action runs
 daily, pulls new uploads from trusted channels with the YouTube Data API, filters
 them with `config.json`, and commits the updated feed. The app checks this file at
 most once a day, so new videos appear without an App Store update.

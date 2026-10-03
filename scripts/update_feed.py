@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Daily Watch feed updater for Ultimate Frisbee Pro.
+Daily Watch feed updater for Flatball.io.
 
 Finds new uploads from trusted channels via the YouTube Data API v3, filters them
 with the rules in config.json, and merges them into videos.json.
