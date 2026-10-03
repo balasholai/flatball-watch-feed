@@ -9,7 +9,7 @@ Embeds only: the feed stores links and metadata. Nothing downloads or re-hosts v
 
 ## One-time setup (about 15 minutes)
 
-1. **Create a public GitHub repo** named `ufp-watch-feed` and push this folder's
+1. **Create a public GitHub repo** named `flatball-watch-feed` and push this folder's
    contents to its root (`videos.json`, `config.json`, `scripts/`, `.github/`).
    It must be public so the app can read the file without credentials — which
    is why this is its own repo and not a folder inside the app, which is
@@ -31,7 +31,7 @@ Embeds only: the feed stores links and metadata. Nothing downloads or re-hosts v
    `lib/core/content/video_feed_store.dart` set
    ```dart
    static const String? remoteFeedUrl =
-       'https://raw.githubusercontent.com/<your-username>/ufp-watch-feed/main/videos.json';
+       'https://raw.githubusercontent.com/<your-username>/flatball-watch-feed/main/videos.json';
    ```
    It is `null` today, so the app uses only its bundled copy.
 
