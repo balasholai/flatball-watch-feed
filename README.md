@@ -96,7 +96,7 @@ when a category is full for the run, `+` when added.
 
 ## Good to know
 
-- **Quota:** about 2 units per channel per run; the free limit is 10,000/day.
+- **Quota:** about 2 units per channel per run, plus 1 to look up the length of any video in the feed that has none (added by hand, say); the free limit is 10,000/day.
 - **Embedding:** videos whose owners disabled embedding are skipped automatically.
 - **Rights:** channels are trusted by you; check that featuring their videos is okay.
 - **GitHub pauses scheduled workflows** in repos with no activity for 60 days. Daily

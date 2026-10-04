@@ -135,6 +135,26 @@ class RunTests(unittest.TestCase):
         self.assertEqual(strategy_added_on("2026-09-12"), [])
         self.assertEqual(len(strategy_added_on("2026-09-10")), 1)
 
+    def test_missing_lengths_are_looked_up_once(self):
+        feed = json.loads(json.dumps(self.feed))
+        target = feed["videos"][0]
+        target.pop("durationSeconds", None)
+        target_id = uf.youtube_id_from_url(target["embedURL"])
+
+        class LengthClient(FakeClient):
+            asked: list = []
+
+            def video_durations(self, ids):
+                LengthClient.asked.append(list(ids))
+                return {target_id: 95, "notInFeed00": 30}
+
+        new_feed, added, _ = uf.run(LengthClient({}), self.config, feed, NOW)
+        self.assertEqual(added, [])
+        self.assertIn(target_id, LengthClient.asked[0])
+        self.assertEqual(new_feed["videos"][0]["durationSeconds"], 95)
+        self.assertEqual(new_feed["version"], "2026.09.17", "a filled length is a change")
+        self.assertEqual(uf.validate(new_feed), [])
+
     def test_no_duplicates_and_no_change(self):
         existing = uf.youtube_id_from_url(self.feed["videos"][0]["embedURL"])
         client = FakeClient({"@watchUFAtv": ("UFA", [video(existing, "Top 10 plays")])})

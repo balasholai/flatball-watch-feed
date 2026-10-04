@@ -88,6 +88,18 @@ class YouTubeClient:
         data = self.get("videos", part="snippet,contentDetails,status", id=",".join(video_ids[:50]))
         return data.get("items", [])
 
+    def video_durations(self, video_ids: list[str]) -> dict[str, int]:
+        """Length in seconds for each id YouTube still has: 1 quota unit per
+        50 ids."""
+        lengths: dict[str, int] = {}
+        for start in range(0, len(video_ids), 50):
+            data = self.get("videos", part="contentDetails", id=",".join(video_ids[start:start + 50]))
+            for item in data.get("items", []):
+                seconds = parse_iso_duration(item.get("contentDetails", {}).get("duration", ""))
+                if seconds:
+                    lengths[item["id"]] = seconds
+        return lengths
+
 
 # ---------------------------------------------------------------- pure helpers
 
@@ -298,6 +310,22 @@ def run(client, config: dict, feed: dict, now: dt.datetime) -> tuple[dict, list[
     videos = [v for v in feed.get("videos", [])
               if youtube_id_from_url(v.get("embedURL", "")) not in set(config.get("blockedVideoIds", []))]
     known_youtube_ids = {youtube_id_from_url(v["embedURL"]) for v in videos if v.get("platform") == "youtube"}
+
+    # Videos added by hand, or before lengths were recorded, have none; the
+    # app shows a length on every card that has one. Looked up once, then kept.
+    missing = {youtube_id_from_url(v["embedURL"]): v for v in videos
+               if v.get("platform") == "youtube" and not v.get("durationSeconds")}
+    missing.pop(None, None)
+    filled = 0
+    if missing and hasattr(client, "video_durations"):
+        try:
+            for video_id, seconds in client.video_durations(sorted(missing)).items():
+                if video_id in missing:
+                    missing[video_id]["durationSeconds"] = seconds
+                    filled += 1
+                    print(f"  length {seconds}s for {missing[video_id].get('title', '')[:60]!r}")
+        except Exception as error:  # lengths are a nicety; never stop the run
+            print(f"! video lengths: {error}", file=sys.stderr)
     taken_slugs = {v["id"] for v in videos}
 
     candidates: list[tuple[str, dict, str, str]] = []  # (publishedAt, item, channel title, default category)
@@ -370,7 +398,7 @@ def run(client, config: dict, feed: dict, now: dt.datetime) -> tuple[dict, list[
 
     videos, removed = trim_feed(videos + added, config.get("maxFeedSize", 50), protect_since,
                                 config.get("minPerCategory"))
-    changed = bool(added or removed or len(videos) != len(feed.get("videos", [])))
+    changed = bool(added or removed or filled or len(videos) != len(feed.get("videos", [])))
     new_feed = {
         "version": local_now.strftime("%Y.%m.%d") if changed else feed.get("version", local_now.strftime("%Y.%m.%d")),
         "videos": videos,
