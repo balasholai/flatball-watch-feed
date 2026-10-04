@@ -1,6 +1,39 @@
 {
-  "version": "2026.09.16",
+  "version": "2026.10.04",
   "videos": [
+    {
+      "id": "first-team-all-ufa-highlights-2026-pro-frisbee",
+      "title": "First Team All-UFA Highlights | 2026 Pro Frisbee",
+      "embedURL": "https://www.youtube.com/watch?v=9-5PLZgqOys",
+      "platform": "youtube",
+      "category": "highlight",
+      "durationSeconds": 644,
+      "dateAdded": "2026-10-04",
+      "description": "Introducing the 2026 First Team All-UFA selections ⭐️",
+      "creator": "UFA Ultimate Frisbee Association"
+    },
+    {
+      "id": "global-disc-golf-forum-2026-wfdf-the-structure-of-the-olympi",
+      "title": "Global Disc Golf Forum 2026 | WFDF The structure of the Olympic Movement, strategies and priorities",
+      "embedURL": "https://www.youtube.com/watch?v=Z426bcY01h8",
+      "platform": "youtube",
+      "category": "highlight",
+      "durationSeconds": 768,
+      "dateAdded": "2026-10-04",
+      "description": "Robert “Nob” Rauch, WFDF president, joined the Global Disc Golf Forum in Vilnius to share its perspective on the structure of the Olympic Movement and WFDF,…",
+      "creator": "World Flying Disc Federation"
+    },
+    {
+      "id": "2-september-2026",
+      "title": "2 September 2026",
+      "embedURL": "https://www.youtube.com/watch?v=-iL9uppR0e8",
+      "platform": "youtube",
+      "category": "play",
+      "durationSeconds": 22,
+      "dateAdded": "2026-10-04",
+      "description": "It’s a play from Gujarat vs Delhi (match no 9- pool stages) Bharat trophy 2026!!",
+      "creator": "Off-Season Ultimate"
+    },
     {
       "id": "off-season-ultimate-intro",
       "title": "This is Off-Season Ultimate: India's frisbee league",
