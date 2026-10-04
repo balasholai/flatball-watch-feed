@@ -147,13 +147,16 @@ def contains_any(text: str, keywords: list[str]) -> bool:
 
 
 def categorize(title: str, description: str, config: dict, default: str) -> str:
-    text = f"{title} {description}"
     rules = config.get("categoryKeywords", {})
+    # The title decides first; the description only when the title says
+    # nothing. Descriptions are long and generic, so "Rookie of the Year
+    # Highlights" was filed as strategy for a coaching word further down.
     # Order matters: a tutorial is strategy even if it mentions layouts, and a
     # "Top 10 layouts" compilation is a highlight rather than a single play.
-    for category in ("strategy", "highlight", "play"):
-        if contains_any(text, rules.get(category, [])):
-            return category
+    for text in (title, description):
+        for category in ("strategy", "highlight", "play"):
+            if contains_any(text, rules.get(category, [])):
+                return category
     return default if default in VALID_CATEGORIES else "highlight"
 
 
@@ -334,10 +337,26 @@ def run(client, config: dict, feed: dict, now: dt.datetime) -> tuple[dict, list[
     # newest-first, which is why the feed ran 7 highlights to 3 strategy.
     quotas = config.get("maxNewPerCategoryPerRun", {})
     taken_per_category: collections.Counter = collections.Counter()
+    # Categories that only refresh every so many days (strategy weekly): one
+    # batch, then nothing until the gap has passed since the last addition.
+    last_added: dict[str, str] = {}
+    for v in videos:
+        if v.get("dateAdded", "") > last_added.get(v.get("category"), ""):
+            last_added[v["category"]] = v["dateAdded"]
+    resting: dict[str, str] = {}
+    for category, days in config.get("categoryEveryDays", {}).items():
+        if category in last_added:
+            next_day = (dt.date.fromisoformat(last_added[category]) + dt.timedelta(days=days)).isoformat()
+            if today < next_day:
+                resting[category] = next_day
     added: list[dict] = []
     for _, item, channel_title, category in sorted(candidates, key=lambda c: c[0], reverse=True):
         if len(added) >= config.get("maxNewPerRun", 3):
             break
+        if category in resting:
+            print(f"  hold [{category}] {item['snippet'].get('title', '')[:60]!r}: "
+                  f"{category} next updates {resting[category]}")
+            continue
         quota = quotas.get(category)
         if quota is not None and taken_per_category[category] >= quota:
             print(f"  hold [{category}] {item['snippet'].get('title', '')[:60]!r}: "

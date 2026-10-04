@@ -59,6 +59,11 @@ class HelperTests(unittest.TestCase):
         self.assertEqual(uf.categorize("Top 10 layouts of the week", "", config, "play"), "highlight")
         self.assertEqual(uf.categorize("Insane layout Callahan", "", config, "highlight"), "play")
         self.assertEqual(uf.categorize("Semifinal: Boston vs Seattle", "", config, "highlight"), "highlight")
+        # The title outranks the description.
+        self.assertEqual(uf.categorize("Rookie of the Year Highlights", "Great mark and force work.",
+                                       config, "strategy"), "highlight")
+        self.assertEqual(uf.categorize("Chander Boyd-Fliegel", "A drill for cutters.", config, "highlight"),
+                         "strategy")
 
     def test_clean_title(self):
         self.assertEqual(uf.clean_title("Huge Layout D! 🔥 #ultimate #frisbee"), "Huge Layout D!")
@@ -73,6 +78,7 @@ class RunTests(unittest.TestCase):
         # A frozen feed, not the live videos.json: the live one changes every
         # day, and counts asserted against it broke the daily run's own tests.
         self.feed = json.loads((Path(__file__).parent / "test_feed.json").read_text())
+        self.config.pop("categoryEveryDays", None)  # tested on its own below
 
     def test_filters_and_adds(self):
         items = [
@@ -104,6 +110,30 @@ class RunTests(unittest.TestCase):
         _, added, _ = uf.run(client, self.config, self.feed, NOW)
         self.assertEqual([a["embedURL"][-11:] for a in added], ["BBBBBBBBBB1"])
         self.assertEqual(added[0]["category"], "strategy")
+
+    def test_hashtags_count_as_mentioning_ultimate(self):
+        items = [video("CCCCCCCCCC1", "Learn this trick throw #ultimatefrisbee", description="")]
+        client = FakeClient({"@watchUFAtv": ("UFA", items)})
+        _, added, _ = uf.run(client, self.config, self.feed, NOW)
+        self.assertEqual([a["embedURL"][-11:] for a in added], ["CCCCCCCCCC1"])
+
+    def test_strategy_waits_a_week_between_batches(self):
+        self.config["categoryEveryDays"] = {"strategy": 7}
+        tutorial = [video("DDDDDDDDDD1", "How to break the mark")]
+
+        def strategy_added_on(day):
+            feed = json.loads(json.dumps(self.feed))
+            for v in feed["videos"]:
+                if v["category"] == "strategy":
+                    v["dateAdded"] = "2026-01-01"
+            feed["videos"][0]["category"] = "strategy"
+            feed["videos"][0]["dateAdded"] = day
+            client = FakeClient({"@watchUFAtv": ("UFA", tutorial)})
+            return uf.run(client, self.config, feed, NOW)[1]
+
+        # NOW is 17 September: a batch on the 12th means the next is the 19th.
+        self.assertEqual(strategy_added_on("2026-09-12"), [])
+        self.assertEqual(len(strategy_added_on("2026-09-10")), 1)
 
     def test_no_duplicates_and_no_change(self):
         existing = uf.youtube_id_from_url(self.feed["videos"][0]["embedURL"])

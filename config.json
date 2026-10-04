@@ -1,5 +1,5 @@
 {
-  "_comment": "Rules for the daily Watch feed update. Edit this file, not the script. Channels may override maxAgeDays, minDurationSeconds, maxDurationSeconds, maxDurationSecondsByCategory and excludeKeywords, and set requireKeywords=false for ultimate-only channels.",
+  "_comment": "Rules for the daily Watch feed update. Edit this file, not the script. Channels may override maxAgeDays, minDurationSeconds, maxDurationSeconds, maxDurationSecondsByCategory and excludeKeywords, and set requireKeywords=false for ultimate-only channels. categoryEveryDays makes a category refresh in a batch every so many days (strategy weekly) instead of daily.",
   "timezone": "Asia/Kolkata",
   "maxFeedSize": 50,
   "maxNewPerRun": 5,
@@ -79,7 +79,8 @@
       "name": "Hive Ultimate",
       "channelId": "UCzI8gchZtzKsI7olyWI6bwQ",
       "defaultCategory": "strategy",
-      "maxAgeDays": 90
+      "maxAgeDays": 90,
+      "minDurationSeconds": 60
     }
   ],
   "requireAnyKeyword": [
@@ -92,7 +93,8 @@
     "ufa",
     "wfdf",
     "ultiworld",
-    "usau"
+    "usau",
+    "ultimatefrisbee"
   ],
   "excludeKeywords": [
     "full game",
@@ -200,5 +202,8 @@
   },
   "maxDurationSecondsByCategory": {
     "strategy": 2700
+  },
+  "categoryEveryDays": {
+    "strategy": 7
   }
 }
