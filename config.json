@@ -70,7 +70,8 @@
     "giveaway",
     "merch",
     "tickets",
-    "replay"
+    "replay",
+    "disc golf"
   ],
   "categoryKeywords": {
     "strategy": [
@@ -147,7 +148,9 @@
       "week"
     ]
   },
-  "blockedVideoIds": [],
+  "blockedVideoIds": [
+    "Z426bcY01h8"
+  ],
   "maxNewPerCategoryPerRun": {
     "strategy": 3,
     "play": 1,

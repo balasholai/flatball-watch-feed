@@ -46,7 +46,7 @@ Embeds only: the feed stores links and metadata. Nothing downloads or re-hosts v
 | `maxAgeDays` | Only consider uploads newer than this |
 | `min/maxDurationSeconds` | Skips tiny clips and full-game streams |
 | `maxDurationSecondsByCategory` | A longer ceiling for one category. Strategy gets 45 minutes: film study and breakdowns routinely pass the 20 minutes that suits a highlight reel, and a single ceiling silently rejected exactly the category the feed was short of. Before a video is categorised the loosest ceiling applies, so nothing is thrown out before anyone asks what it is |
-| `requireAnyKeyword` / `excludeKeywords` | Must mention ultimate; skips streams, podcasts, promos |
+| `requireAnyKeyword` / `excludeKeywords` | Must mention ultimate (title or description); skips streams, podcasts, promos and disc golf. Excluded words are checked in the **title only**: channels repeat promo text under every upload |
 | `categoryKeywords` | Title/description words that pick Strategy, Highlight or Play (checked in that order) |
 | `blockedVideoIds` | YouTube ids to remove now and never add again |
 | `maxFeedSize` / `protectRecentDays` | Keeps ~50 videos, dropping the oldest but never anything from the last week |

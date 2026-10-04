@@ -91,6 +91,18 @@ class RunTests(unittest.TestCase):
         self.assertEqual(new_feed["version"], "2026.09.17")
         self.assertEqual(uf.validate(new_feed), [])
 
+    def test_excluded_words_count_in_titles_not_descriptions(self):
+        boilerplate = ("How to throw a flick. Listen to our podcast, "
+                       "grab merch and tickets at the link below.")
+        items = [
+            video("BBBBBBBBBB1", "How to Throw a Frisbee", description=boilerplate),
+            video("BBBBBBBBBB2", "Global Disc Golf Forum 2026 | WFDF talk"),
+        ]
+        client = FakeClient({"@watchUFAtv": ("UFA", items)})
+        _, added, _ = uf.run(client, self.config, self.feed, NOW)
+        self.assertEqual([a["embedURL"][-11:] for a in added], ["BBBBBBBBBB1"])
+        self.assertEqual(added[0]["category"], "strategy")
+
     def test_no_duplicates_and_no_change(self):
         existing = uf.youtube_id_from_url(self.feed["videos"][0]["embedURL"])
         client = FakeClient({"@watchUFAtv": ("UFA", [video(existing, "Top 10 plays")])})

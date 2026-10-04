@@ -200,7 +200,9 @@ def reject_reason(item: dict, config: dict, now: dt.datetime, known_ids: set[str
     ceiling = max_duration_for(config, category)
     if duration > ceiling:
         return f"too long (over {ceiling}s for {category or 'any category'})"
-    if contains_any(text, config.get("excludeKeywords", [])):
+    # Titles only: channels repeat the same promo text (podcast, merch,
+    # tickets) under every upload, which turned away good videos wholesale.
+    if contains_any(title, config.get("excludeKeywords", [])):
         return "excluded keyword"
     required = config.get("requireAnyKeyword", [])
     if required and not contains_any(text, required):
