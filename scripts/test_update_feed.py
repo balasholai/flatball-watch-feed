@@ -70,7 +70,9 @@ class HelperTests(unittest.TestCase):
 class RunTests(unittest.TestCase):
     def setUp(self):
         self.config = json.loads((ROOT / "config.json").read_text())
-        self.feed = json.loads((ROOT / "videos.json").read_text())
+        # A frozen feed, not the live videos.json: the live one changes every
+        # day, and counts asserted against it broke the daily run's own tests.
+        self.feed = json.loads((Path(__file__).parent / "test_feed.json").read_text())
 
     def test_filters_and_adds(self):
         items = [

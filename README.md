@@ -74,10 +74,11 @@ A video's category is decided by `categoryKeywords` against its title and
 description, falling back to the channel's `defaultCategory`. Two things follow:
 
 - **A category needs a source.** Quotas reserve slots; they cannot invent
-  videos. Every channel in `config.json` today is a broadcaster with
-  `defaultCategory: highlight`, so strategy only appears when a broadcaster
-  happens to publish a tutorial. For a reliable strategy feed, add a coaching
-  channel with `defaultCategory: "strategy"`.
+  videos. Strategy comes from the coaching channels (Rowan McDonnell, Eric
+  Deng, Ultimate101, Ultimate Mobility, Hive Ultimate) with
+  `defaultCategory: "strategy"`, and a longer `maxAgeDays` because coaching
+  does not go stale. Rowan's `minDurationSeconds: 60` keeps his short clips
+  out in favour of full videos.
 - **`excludeKeywords` applies to strategy too.** `interview` is on that list,
   which also blocks a coaching interview. If you add a channel whose good
   content is framed that way, override `excludeKeywords` on that channel rather

@@ -43,6 +43,43 @@
       "requireKeywords": false,
       "maxAgeDays": 45,
       "minDurationSeconds": 10
+    },
+    {
+      "name": "Rowan McDonnell",
+      "channelId": "UCRqlhwm5aYw9QJcFkDhBNdQ",
+      "defaultCategory": "strategy",
+      "maxAgeDays": 60,
+      "minDurationSeconds": 60
+    },
+    {
+      "name": "Eric Deng – That Ultimate Coach",
+      "channelId": "UChmBij9e8umACfvR6WYB1eQ",
+      "defaultCategory": "strategy",
+      "maxAgeDays": 60
+    },
+    {
+      "name": "Ulti Von",
+      "channelId": "UCTRx1qCYGIt_7ATK10UYIHQ",
+      "defaultCategory": "highlight",
+      "maxAgeDays": 60
+    },
+    {
+      "name": "Ultimate101",
+      "channelId": "UCz2IZ1nxI1vFBdyA1DX-img",
+      "defaultCategory": "strategy",
+      "maxAgeDays": 365
+    },
+    {
+      "name": "Ultimate Mobility",
+      "channelId": "UC0z75FMrKBF2LcGLBvLmmPg",
+      "defaultCategory": "strategy",
+      "maxAgeDays": 60
+    },
+    {
+      "name": "Hive Ultimate",
+      "channelId": "UCzI8gchZtzKsI7olyWI6bwQ",
+      "defaultCategory": "strategy",
+      "maxAgeDays": 90
     }
   ],
   "requireAnyKeyword": [
