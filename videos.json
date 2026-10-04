@@ -112,12 +112,23 @@
       "creator": "Ultiworld - Ultimate Frisbee"
     },
     {
+      "id": "defensive-player-of-the-year-highlights-from-cooper-williams",
+      "title": "Defensive Player Of The Year Highlights From Cooper Williams",
+      "embedURL": "https://www.youtube.com/watch?v=0DfxgW47dLQ",
+      "platform": "youtube",
+      "category": "highlight",
+      "durationSeconds": 323,
+      "dateAdded": "2026-10-04",
+      "description": "Cooper Williams was the top block getter in the league in 2026 to earn \"Defensive Player Of The Year\" honors, presented by Delta.",
+      "creator": "UFA Ultimate Frisbee Association"
+    },
+    {
       "id": "off-season-ultimate-intro",
       "title": "This is Off-Season Ultimate: India's frisbee league",
       "embedURL": "https://www.youtube.com/watch?v=jYtwf8CyRUM",
       "platform": "youtube",
       "category": "highlight",
-      "durationSeconds": null,
+      "durationSeconds": 33,
       "dateAdded": "2026-09-16",
       "description": "A first look at Off-Season Ultimate, an Indian ultimate frisbee league.",
       "creator": "Off-Season Ultimate",
@@ -129,7 +140,7 @@
       "embedURL": "https://www.youtube.com/watch?v=LJxBD_e316k",
       "platform": "youtube",
       "category": "highlight",
-      "durationSeconds": null,
+      "durationSeconds": 240,
       "dateAdded": "2026-09-16",
       "description": "Match 2 highlights from season 2 of the Refex Mumbai Ultimate League.",
       "keep": true
@@ -140,7 +151,7 @@
       "embedURL": "https://www.youtube.com/watch?v=pDdyAcSPVus",
       "platform": "youtube",
       "category": "highlight",
-      "durationSeconds": null,
+      "durationSeconds": 2097,
       "dateAdded": "2026-09-15",
       "description": "The final of the Auroville [[hat-tournament|hat tournament]] in India.",
       "keep": true
@@ -151,7 +162,7 @@
       "embedURL": "https://www.youtube.com/watch?v=b4qhoICXPqs",
       "platform": "youtube",
       "category": "highlight",
-      "durationSeconds": null,
+      "durationSeconds": 783,
       "dateAdded": "2026-09-14",
       "description": "The ten best plays from the 2026 pro season.",
       "creator": "UFA"
@@ -162,7 +173,7 @@
       "embedURL": "https://www.youtube.com/watch?v=Tg3F4Zp0K4I",
       "platform": "youtube",
       "category": "strategy",
-      "durationSeconds": null,
+      "durationSeconds": 1275,
       "dateAdded": "2026-09-12",
       "description": "How the [[vertical-stack]] sets up lanes for under and deep cuts."
     },
@@ -172,7 +183,7 @@
       "embedURL": "https://www.youtube.com/watch?v=1_-D4MeUo8U",
       "platform": "youtube",
       "category": "play",
-      "durationSeconds": null,
+      "durationSeconds": 9,
       "dateAdded": "2026-09-10",
       "description": "A defender lays out for the block in the endzone and scores a [[callahan]]."
     },
@@ -182,7 +193,7 @@
       "embedURL": "https://www.youtube.com/watch?v=YgaUxFOPpg4",
       "platform": "youtube",
       "category": "highlight",
-      "durationSeconds": null,
+      "durationSeconds": 601,
       "dateAdded": "2026-09-02",
       "description": "A countdown of the standout plays from 2025.",
       "creator": "UFA"
@@ -193,7 +204,7 @@
       "embedURL": "https://www.youtube.com/watch?v=jxb9aNsx938",
       "platform": "youtube",
       "category": "play",
-      "durationSeconds": null,
+      "durationSeconds": 27,
       "dateAdded": "2026-08-28",
       "description": "A full-extension [[layout]] interception in the endzone for a Callahan."
     },
@@ -203,7 +214,7 @@
       "embedURL": "https://www.youtube.com/watch?v=WXX38xZvZRs",
       "platform": "youtube",
       "category": "strategy",
-      "durationSeconds": null,
+      "durationSeconds": 743,
       "dateAdded": "2026-08-24",
       "description": "The [[horizontal-stack]] offense and how cutters use the space in front and behind."
     },
@@ -213,7 +224,7 @@
       "embedURL": "https://www.youtube.com/watch?v=wc1q4vEJQgo",
       "platform": "youtube",
       "category": "highlight",
-      "durationSeconds": null,
+      "durationSeconds": 506,
       "dateAdded": "2026-08-20",
       "description": "Big catches, blocks and hucks from the 2024 season.",
       "creator": "UFA"
@@ -224,7 +235,7 @@
       "embedURL": "https://www.youtube.com/watch?v=zbhocM3hvmc",
       "platform": "youtube",
       "category": "play",
-      "durationSeconds": null,
+      "durationSeconds": 29,
       "dateAdded": "2026-08-12",
       "description": "A Callahan on the final point to win the game."
     },
@@ -234,7 +245,7 @@
       "embedURL": "https://www.youtube.com/watch?v=OjU0Kqqtr6Y",
       "platform": "youtube",
       "category": "highlight",
-      "durationSeconds": null,
+      "durationSeconds": 192,
       "dateAdded": "2026-08-05",
       "description": "Ultimate plays that made SportsCenter's Top 10."
     },
@@ -244,7 +255,7 @@
       "embedURL": "https://www.youtube.com/watch?v=PY2zQe6M3dk",
       "platform": "youtube",
       "category": "strategy",
-      "durationSeconds": null,
+      "durationSeconds": 51,
       "dateAdded": "2026-07-30",
       "description": "A beginner-friendly look at why offenses line up in a [[stack]]."
     }
