@@ -1,6 +1,16 @@
 {
-  "version": "2026.10.04",
+  "version": "2026.10.05",
   "videos": [
+    {
+      "id": "20-year-old-elliot-hawkins-ripping-the-frisbee",
+      "title": "20-year-old Elliot Hawkins ripping the frisbee",
+      "embedURL": "https://www.youtube.com/watch?v=RG68Vi0SROQ",
+      "platform": "youtube",
+      "category": "highlight",
+      "durationSeconds": 35,
+      "dateAdded": "2026-10-05",
+      "creator": "UFA Ultimate Frisbee Association"
+    },
     {
       "id": "first-team-all-ufa-highlights-2026-pro-frisbee",
       "title": "First Team All-UFA Highlights | 2026 Pro Frisbee",
