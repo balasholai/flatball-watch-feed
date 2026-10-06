@@ -1,6 +1,28 @@
 {
-  "version": "2026.10.05",
+  "version": "2026.10.06",
   "videos": [
+    {
+      "id": "universe-point-slow-vs-sprocket-northeast-regionals-2nd-plac",
+      "title": "Universe Point: Slow vs. Sprocket - Northeast Regionals 2nd Place Final",
+      "embedURL": "https://www.youtube.com/watch?v=jlel3VfJ_L0",
+      "platform": "youtube",
+      "category": "highlight",
+      "durationSeconds": 71,
+      "dateAdded": "2026-10-06",
+      "description": "Check out the universe point finish in this Mixed Division Second Place Final (Game to go to Nationals) between Boston Slow and Boston Sprocket at the 2026…",
+      "creator": "Ultiworld - Ultimate Frisbee"
+    },
+    {
+      "id": "15-minutes-of-the-best-layout-goals-from-the-2026-season",
+      "title": "15 minutes of the BEST layout goals from the 2026 season",
+      "embedURL": "https://www.youtube.com/watch?v=LwMMMg7fIxQ",
+      "platform": "youtube",
+      "category": "play",
+      "durationSeconds": 904,
+      "dateAdded": "2026-10-06",
+      "description": "Nothing but pure dimes.",
+      "creator": "UFA Ultimate Frisbee Association"
+    },
     {
       "id": "20-year-old-elliot-hawkins-ripping-the-frisbee",
       "title": "20-year-old Elliot Hawkins ripping the frisbee",
