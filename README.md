@@ -101,3 +101,11 @@ when a category is full for the run, `+` when added.
 - **Rights:** channels are trusted by you; check that featuring their videos is okay.
 - **GitHub pauses scheduled workflows** in repos with no activity for 60 days. Daily
   commits normally prevent that; if the feed goes quiet, re-enable it under Actions.
+
+## quiz.json
+
+The Flatball.io daily quiz's question bank (WFDF numbers and multi-step
+plays). It is built and published from the app repo with
+`tool/build_quiz.py` and `tool/publish-quiz.sh`; apps use it when its
+`version` is higher than the one they shipped with. The daily workflow
+never touches it.
