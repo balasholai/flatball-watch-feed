@@ -1,0 +1,923 @@
+{
+  "version": 1,
+  "numbers": [
+    {
+      "id": "game-to",
+      "rule": "4.2",
+      "clause": "4.2",
+      "level": "medium",
+      "prompt": "A game is finished and won by the first team to score ___ goals.",
+      "answer": "fifteen (15)",
+      "wrong": [
+        "thirteen (13)",
+        "eleven (11)",
+        "seventeen (17)"
+      ],
+      "why": "A game is finished and won by the first team to score fifteen (15) goals."
+    },
+    {
+      "id": "half-time",
+      "rule": "4.3",
+      "clause": "4.3",
+      "level": "medium",
+      "prompt": "A game is separated into two (2) periods of play, called halves. Half time occurs when a team first scores ___ goals.",
+      "answer": "eight (8)",
+      "wrong": [
+        "seven (7)",
+        "nine (9)",
+        "ten (10)"
+      ],
+      "why": "A game is separated into two (2) periods of play, called halves. Half time occurs when a team first scores eight (8) goals."
+    },
+    {
+      "id": "players-max",
+      "rule": "5.1",
+      "clause": "5.1",
+      "level": "medium",
+      "prompt": "Each team will put a maximum of ___ players and a minimum of five (5) players on the field during each point.",
+      "answer": "seven (7)",
+      "wrong": [
+        "six (6)",
+        "eight (8)",
+        "five (5)"
+      ],
+      "why": "Each team will put a maximum of seven (7) players and a minimum of five (5) players on the field during each point."
+    },
+    {
+      "id": "players-min",
+      "rule": "5.1",
+      "clause": "5.1",
+      "level": "hard",
+      "prompt": "Each team will put a maximum of seven (7) players and a minimum of ___ players on the field during each point.",
+      "answer": "five (5)",
+      "wrong": [
+        "four (4)",
+        "six (6)",
+        "three (3)"
+      ],
+      "why": "Each team will put a maximum of seven (7) players and a minimum of five (5) players on the field during each point."
+    },
+    {
+      "id": "pivot-central",
+      "rule": "8.5",
+      "clause": "8.5.1.1",
+      "level": "hard",
+      "prompt": "In addition to 8.5, after a turnover the thrower must establish a pivot point within the following time limits, if the disc did not become out-of-bounds, and the disc’s location is: … in the central zone – within ___ seconds of the disc coming to rest.",
+      "answer": "ten (10)",
+      "wrong": [
+        "five (5)",
+        "fifteen (15)",
+        "twenty (20)"
+      ],
+      "why": "In addition to 8.5, after a turnover the thrower must establish a pivot point within the following time limits, if the disc did not become out-of-bounds, and the disc’s location is: … in the central zone – within ten (10) seconds of the disc coming to rest."
+    },
+    {
+      "id": "pivot-endzone",
+      "rule": "8.5",
+      "clause": "8.5.1.2",
+      "level": "hard",
+      "prompt": "In addition to 8.5, after a turnover the thrower must establish a pivot point within the following time limits, if the disc did not become out-of-bounds, and the disc’s location is: … in an end zone – within ___ seconds of the disc coming to rest.",
+      "answer": "twenty (20)",
+      "wrong": [
+        "ten (10)",
+        "fifteen (15)",
+        "thirty (30)"
+      ],
+      "why": "In addition to 8.5, after a turnover the thrower must establish a pivot point within the following time limits, if the disc did not become out-of-bounds, and the disc’s location is: … in an end zone – within twenty (20) seconds of the disc coming to rest."
+    },
+    {
+      "id": "stall-to",
+      "rule": "9.1",
+      "clause": "9.1",
+      "level": "medium",
+      "prompt": "The marker administers a stall count on the thrower by announcing “Stalling” and then counting from one (1) to ___. The interval between the start of each number in the stall count must be at least one (1) second.",
+      "answer": "ten (10)",
+      "wrong": [
+        "eight (8)",
+        "nine (9)",
+        "twelve (12)"
+      ],
+      "why": "The marker administers a stall count on the thrower by announcing “Stalling” and then counting from one (1) to ten (10). The interval between the start of each number in the stall count must be at least one (1) second."
+    },
+    {
+      "id": "stall-interval",
+      "rule": "9.1",
+      "clause": "9.1",
+      "level": "medium",
+      "prompt": "The marker administers a stall count on the thrower by announcing “Stalling” and then counting from one (1) to ten (10). The interval between the start of each number in the stall count must be at least ___.",
+      "answer": "one (1) second",
+      "wrong": [
+        "half a second",
+        "two (2) seconds",
+        "one and a half seconds"
+      ],
+      "why": "The marker administers a stall count on the thrower by announcing “Stalling” and then counting from one (1) to ten (10). The interval between the start of each number in the stall count must be at least one (1) second."
+    },
+    {
+      "id": "marking-distance",
+      "rule": "9.3",
+      "clause": "9.3.2",
+      "level": "medium",
+      "prompt": "The marker may only start and continue a stall count when: … They are within ___ of the thrower’s pivot point, or the pivot location if the thrower is not at that location; and",
+      "answer": "three (3) metres",
+      "wrong": [
+        "two (2) metres",
+        "four (4) metres",
+        "five (5) metres"
+      ],
+      "why": "The marker may only start and continue a stall count when: … They are within three (3) metres of the thrower’s pivot point, or the pivot location if the thrower is not at that location; and"
+    },
+    {
+      "id": "new-marker",
+      "rule": "9.4",
+      "clause": "9.4",
+      "level": "medium",
+      "prompt": "If the marker moves beyond the appropriate three (3) metre radius, or a different player becomes the marker, the stall count must be restarted at ___.",
+      "answer": "“Stalling one (1)”",
+      "wrong": [
+        "maximum nine (9)",
+        "“Stalling eight (8)”",
+        "maximum six (6)"
+      ],
+      "why": "If the marker moves beyond the appropriate three (3) metre radius, or a different player becomes the marker, the stall count must be restarted at “Stalling one (1)”."
+    },
+    {
+      "id": "restart-defence",
+      "rule": "9.5",
+      "clause": "9.5.1",
+      "level": "hard",
+      "prompt": "After a stoppage in play the stall count is resumed as follows: … After an accepted breach by the defence the stall count restarts at ___.",
+      "answer": "“Stalling one (1)”",
+      "wrong": [
+        "maximum nine (9)",
+        "“Stalling eight (8)”",
+        "maximum six (6)"
+      ],
+      "why": "After a stoppage in play the stall count is resumed as follows: … After an accepted breach by the defence the stall count restarts at “Stalling one (1)”."
+    },
+    {
+      "id": "restart-offence",
+      "rule": "9.5",
+      "clause": "9.5.2",
+      "level": "hard",
+      "prompt": "After a stoppage in play the stall count is resumed as follows: … After an accepted breach by the offence the stall count restarts at ___.",
+      "answer": "maximum nine (9)",
+      "wrong": [
+        "“Stalling one (1)”",
+        "“Stalling eight (8)”",
+        "maximum six (6)"
+      ],
+      "why": "After a stoppage in play the stall count is resumed as follows: … After an accepted breach by the offence the stall count restarts at maximum nine (9)."
+    },
+    {
+      "id": "restart-stall-out",
+      "rule": "9.5",
+      "clause": "9.5.3",
+      "level": "hard",
+      "prompt": "After a stoppage in play the stall count is resumed as follows: … After a contested stall-out the stall count restarts at ___.",
+      "answer": "“Stalling eight (8)”",
+      "wrong": [
+        "“Stalling one (1)”",
+        "maximum nine (9)",
+        "maximum six (6)"
+      ],
+      "why": "After a stoppage in play the stall count is resumed as follows: … After a contested stall-out the stall count restarts at “Stalling eight (8)”."
+    },
+    {
+      "id": "restart-other",
+      "rule": "9.5",
+      "clause": "9.5.5",
+      "level": "hard",
+      "prompt": "After a stoppage in play the stall count is resumed as follows: … After all other calls, including “pick”, the stall count restarts at ___.",
+      "answer": "maximum six (6)",
+      "wrong": [
+        "“Stalling one (1)”",
+        "maximum nine (9)",
+        "“Stalling eight (8)”"
+      ],
+      "why": "After a stoppage in play the stall count is resumed as follows: … After all other calls, including “pick”, the stall count restarts at maximum six (6)."
+    },
+    {
+      "id": "obstruction-distance",
+      "rule": "2.7",
+      "clause": "2.7",
+      "level": "hard",
+      "prompt": "The immediate surroundings of the playing field shall be kept clear of movable objects. If play is obstructed by non-players or objects within ___ of the perimeter line, any obstructed player or thrower in possession may call “Violation”.",
+      "answer": "three (3) metres",
+      "wrong": [
+        "one (1) metre",
+        "five (5) metres",
+        "ten (10) metres"
+      ],
+      "why": "The immediate surroundings of the playing field shall be kept clear of movable objects. If play is obstructed by non-players or objects within three (3) metres of the perimeter line, any obstructed player or thrower in possession may call “Violation”."
+    },
+    {
+      "id": "contact-restart",
+      "rule": "17.6",
+      "clause": "17.6.1.3",
+      "level": "hard",
+      "prompt": "If a Defensive Throwing Foul occurs prior to the thrower releasing the pass and not during the throwing motion, the thrower may choose to call a contact infraction, by calling “Contact”. After a contact infraction that is not contested, play does not stop and the marker must resume the stall count at ___.",
+      "answer": "one (1)",
+      "wrong": [
+        "six (6)",
+        "eight (8)",
+        "nine (9)"
+      ],
+      "why": "If a Defensive Throwing Foul occurs prior to the thrower releasing the pass and not during the throwing motion, the thrower may choose to call a contact infraction, by calling “Contact”. After a contact infraction that is not contested, play does not stop and the marker must resume the stall count at one (1)."
+    },
+    {
+      "id": "indirect-delay",
+      "rule": "17.8",
+      "clause": "17.8.1.1",
+      "level": "hard",
+      "prompt": "Prior to making the \"Indirect Foul\" call, the player may delay the call up to ___ to determine if the breach will affect the play.",
+      "answer": "two (2) seconds",
+      "wrong": [
+        "one (1) second",
+        "three (3) seconds",
+        "five (5) seconds"
+      ],
+      "why": "Prior to making the \"Indirect Foul\" call, the player may delay the call up to two (2) seconds to determine if the breach will affect the play."
+    },
+    {
+      "id": "double-team",
+      "rule": "18.1",
+      "clause": "18.1.1.5",
+      "level": "medium",
+      "prompt": "\"Double Team\" – a defensive player other than the marker is within ___ of the thrower's pivot point without also guarding another offensive player.",
+      "answer": "three (3) metres",
+      "wrong": [
+        "two (2) metres",
+        "four (4) metres",
+        "five (5) metres"
+      ],
+      "why": "\"Double Team\" – a defensive player other than the marker is within three (3) metres of the thrower's pivot point without also guarding another offensive player."
+    },
+    {
+      "id": "marking-resume",
+      "rule": "18.1",
+      "clause": "18.1.3",
+      "level": "hard",
+      "prompt": "After all marking infractions listed in 18.1.1 and where play has not stopped, the marker must resume the stall count with the number last fully uttered before the call, ___.",
+      "answer": "minus one (1)",
+      "wrong": [
+        "minus two (2)",
+        "plus one (1)",
+        "minus three (3)"
+      ],
+      "why": "After all marking infractions listed in 18.1.1 and where play has not stopped, the marker must resume the stall count with the number last fully uttered before the call, minus one (1)."
+    },
+    {
+      "id": "pick-delay",
+      "rule": "18.3",
+      "clause": "18.3.1.1",
+      "level": "hard",
+      "prompt": "Prior to making the \"Pick\" call, the defender may delay the call up to ___ to determine if the obstruction will affect the play.",
+      "answer": "two (2) seconds",
+      "wrong": [
+        "one (1) second",
+        "three (3) seconds",
+        "five (5) seconds"
+      ],
+      "why": "Prior to making the \"Pick\" call, the defender may delay the call up to two (2) seconds to determine if the obstruction will affect the play."
+    },
+    {
+      "id": "bleeding",
+      "rule": "19.2",
+      "clause": "19.2.1.2",
+      "level": "hard",
+      "prompt": "A player who has an issue regarding an open or bleeding wound has ___ seconds to effectively address the issue. If they need additional time to address the issue, they must choose either to be substituted, or to charge their own team with a time-out.",
+      "answer": "seventy (70)",
+      "wrong": [
+        "sixty (60)",
+        "seventy-five (75)",
+        "ninety (90)"
+      ],
+      "why": "A player who has an issue regarding an open or bleeding wound has seventy (70) seconds to effectively address the issue. If they need additional time to address the issue, they must choose either to be substituted, or to charge their own team with a time-out."
+    },
+    {
+      "id": "timeout-length",
+      "rule": "20.3",
+      "clause": "20.3",
+      "level": "medium",
+      "prompt": "After the pull only a thrower with possession of the disc may call a time-out. The time-out starts when the “T” is formed, and lasts ___ seconds.",
+      "answer": "seventy-five (75)",
+      "wrong": [
+        "sixty (60)",
+        "seventy (70)",
+        "ninety (90)"
+      ],
+      "why": "After the pull only a thrower with possession of the disc may call a time-out. The time-out starts when the “T” is formed, and lasts seventy-five (75) seconds."
+    },
+    {
+      "id": "timeout-restart",
+      "rule": "20.3",
+      "clause": "20.3.6",
+      "level": "hard",
+      "prompt": "After the pull only a thrower with possession of the disc may call a time-out. The time-out starts when the “T” is formed, and lasts seventy-five (75) seconds. After such a time-out: … The stall count restarts at ___. However if the marker has been switched, the stall count restarts at “Stalling one (1)”.",
+      "answer": "maximum nine (9)",
+      "wrong": [
+        "“Stalling one (1)”",
+        "“Stalling eight (8)”",
+        "maximum six (6)"
+      ],
+      "why": "After the pull only a thrower with possession of the disc may call a time-out. The time-out starts when the “T” is formed, and lasts seventy-five (75) seconds. After such a time-out: … The stall count restarts at maximum nine (9). However if the marker has been switched, the stall count restarts at “Stalling one (1)”."
+    },
+    {
+      "id": "no-timeouts-left",
+      "rule": "20.4",
+      "clause": "20.4",
+      "level": "hard",
+      "prompt": "If the thrower attempts to call a time-out while play is live and when their team has no remaining time-outs, play is stopped. The marker must add ___ to the stall count they would have restarted play on before restarting play with a check. If this results in a stall count of ten (10) or above, this is a \"stall-out\" turnover.",
+      "answer": "two (2) seconds",
+      "wrong": [
+        "one (1) second",
+        "three (3) seconds",
+        "five (5) seconds"
+      ],
+      "why": "If the thrower attempts to call a time-out while play is live and when their team has no remaining time-outs, play is stopped. The marker must add two (2) seconds to the stall count they would have restarted play on before restarting play with a check. If this results in a stall count of ten (10) or above, this is a \"stall-out\" turnover."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "pull-out-untouched",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The pull sails out of bounds without touching the field or any player. Where does the offence start?",
+      "answer": "At the brick mark nearest the end zone they defend, or on the central zone nearest where it went out — their choice",
+      "wrong": [
+        "Only at the brick mark",
+        "On the goal line they are defending",
+        "It is re-pulled"
+      ],
+      "rules": [
+        "7.12"
+      ],
+      "why": "The brick option must be signalled before the disc is picked up."
+    },
+    {
+      "id": "pull-rolls-out",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The pull lands in the field, then rolls out of bounds without an offensive player touching it. Where does the offence start?",
+      "answer": "Where it crossed the perimeter line (or the nearest point of the central zone, if that is in their defending end zone)",
+      "wrong": [
+        "At the brick mark",
+        "Where it first landed",
+        "Where it came to rest out of bounds"
+      ],
+      "rules": [
+        "7.11"
+      ],
+      "why": "A pull that touched the field first gets no brick option."
+    },
+    {
+      "id": "dropped-pull",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver touches the pull in the air, and it falls to the ground. What happens?",
+      "answer": "Turnover: a dropped pull",
+      "wrong": [
+        "Play on — any receiver may now pick it up",
+        "The pull is taken again",
+        "The offence takes it at the brick mark"
+      ],
+      "rules": [
+        "7.8",
+        "13.1"
+      ],
+      "why": "Once the offence touches a pull in the air, they must establish possession."
+    },
+    {
+      "id": "offside-pull",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The defence crosses the goal line before the pull is released, and the offence calls offside. What should the offence do?",
+      "answer": "Let the disc hit the ground untouched, then play as if a brick was called",
+      "wrong": [
+        "Catch it and play on",
+        "Stop play and have the pull taken again",
+        "Start with the disc at their own goal line"
+      ],
+      "rules": [
+        "7.5"
+      ],
+      "why": "No check is needed after an offside call."
+    },
+    {
+      "id": "contested-stall-completed",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The marker calls “ten” and the thrower’s pass is completed. The thrower contests the stall-out, and the players cannot agree. What happens?",
+      "answer": "The disc goes back to the thrower and the count restarts at “Stalling eight”",
+      "wrong": [
+        "The completion stands",
+        "Turnover where the thrower stood",
+        "The disc goes back to the thrower at “Stalling one”"
+      ],
+      "rules": [
+        "13.4",
+        "9.5"
+      ],
+      "why": "A contested stall-out restarts at eight."
+    },
+    {
+      "id": "contested-stall-incomplete",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The thrower contests a stall-out, but also threw, and the pass fell incomplete. What happens?",
+      "answer": "The turnover stands; play restarts with a check",
+      "wrong": [
+        "The disc goes back to the thrower at eight",
+        "The disc goes back to the thrower at one",
+        "The point is replayed"
+      ],
+      "rules": [
+        "13.4"
+      ],
+      "why": "Throwing anyway and missing leaves the turnover in place."
+    },
+    {
+      "id": "strip-in-endzone",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver catches the disc in their attacking end zone, and a defender’s contact knocks it loose. The foul is accepted. What happens?",
+      "answer": "A goal is awarded",
+      "wrong": [
+        "The receiver gets the disc on the goal line",
+        "The disc goes back to the thrower",
+        "Turnover, since the receiver never had possession"
+      ],
+      "rules": [
+        "17.3"
+      ],
+      "why": "A strip of what would have been a goal is a goal."
+    },
+    {
+      "id": "receiving-foul-accepted",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A defender fouls a receiver in the central zone as they reach for the disc, and it falls. The foul is accepted. What happens?",
+      "answer": "The fouled receiver gets the disc where the foul happened; play restarts with a check",
+      "wrong": [
+        "The disc goes back to the thrower",
+        "Turnover, since the pass was incomplete",
+        "The receiver gets the disc where the pass landed"
+      ],
+      "rules": [
+        "17.2"
+      ]
+    },
+    {
+      "id": "receiving-foul-contested",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver calls a foul on the defender who blocked the pass. The defender contests. What happens?",
+      "answer": "The disc goes back to the thrower",
+      "wrong": [
+        "The block stands; the defence take the disc",
+        "The receiver gets the disc where the foul happened",
+        "The point is replayed"
+      ],
+      "rules": [
+        "17.2",
+        "15.10"
+      ],
+      "why": "A contested receiving foul goes back to the thrower."
+    },
+    {
+      "id": "force-out-endzone",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver jumps for a catch over the end zone, is pushed by a defender, and lands out of bounds. The foul is accepted. What happens?",
+      "answer": "It is a goal",
+      "wrong": [
+        "Turnover: they landed out",
+        "The receiver gets the disc on the goal line",
+        "The disc goes back to the thrower"
+      ],
+      "rules": [
+        "17.5"
+      ],
+      "why": "Had they not been pushed, they would have landed in the end zone."
+    },
+    {
+      "id": "force-out-contested",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver is pushed out of bounds while catching and calls a force-out foul. The defender contests. What happens?",
+      "answer": "The disc goes back to the thrower",
+      "wrong": [
+        "Turnover: the receiver landed out",
+        "The receiver keeps it where they crossed the line",
+        "The defence take it at the sideline"
+      ],
+      "rules": [
+        "17.5"
+      ]
+    },
+    {
+      "id": "simultaneous-catch",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver and a defender catch the disc at exactly the same moment. Who has it?",
+      "answer": "The offence",
+      "wrong": [
+        "The defence",
+        "Neither: the disc goes back to the thrower",
+        "Whoever lands first"
+      ],
+      "rules": [
+        "12.3"
+      ]
+    },
+    {
+      "id": "toe-on-line",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver catches the disc in the air and lands with one foot on the sideline. What happens?",
+      "answer": "Turnover: the line is out of bounds",
+      "wrong": [
+        "Catch: part of the foot was in",
+        "Catch, if the other foot lands in",
+        "The disc goes back to the thrower"
+      ],
+      "rules": [
+        "11.1",
+        "11.4"
+      ],
+      "why": "The perimeter lines are not part of the playing field."
+    },
+    {
+      "id": "momentum-out",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver catches the disc, lands in bounds, then their momentum carries them out of bounds. What happens?",
+      "answer": "It is a catch; they put the disc into play where they crossed the line",
+      "wrong": [
+        "Turnover: they ended up out",
+        "It is a catch; they play on from where they stopped",
+        "The disc goes back to the thrower"
+      ],
+      "rules": [
+        "11.3"
+      ],
+      "why": "Their first contact was in bounds."
+    },
+    {
+      "id": "endzone-first-foot-out",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver catches the disc running, lands in the central zone, and their momentum carries them into the end zone. What happens?",
+      "answer": "No goal; they put the disc into play at the nearest point on the goal line",
+      "wrong": [
+        "Goal",
+        "No goal; they play on from where they stopped",
+        "No goal; they go back to where they caught it"
+      ],
+      "rules": [
+        "14.1",
+        "14.3"
+      ],
+      "why": "A goal needs every ground contact of the catch in the end zone."
+    },
+    {
+      "id": "turnover-defending-endzone",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A long pass lands untouched in the end zone your team defends. Your team now has the disc. Where can you put it into play?",
+      "answer": "Where it stopped, or walk it up to the goal line — your first move decides",
+      "wrong": [
+        "Only on the goal line",
+        "Only at the brick mark",
+        "Only where it stopped"
+      ],
+      "rules": [
+        "13.11"
+      ],
+      "why": "Faking a pass or staying put keeps it where it stopped."
+    },
+    {
+      "id": "turnover-attacking-endzone",
+      "level": "hard",
+      "draft": true,
+      "prompt": "Your team’s pass is dropped in the end zone you are attacking. The other team now has it. Where do they put it into play?",
+      "answer": "Where it stopped, or at the nearest point on their goal line — their choice",
+      "wrong": [
+        "At the brick mark",
+        "Only where it stopped",
+        "Only on the goal line"
+      ],
+      "rules": [
+        "13.11"
+      ],
+      "why": "For them it is now their defending end zone."
+    },
+    {
+      "id": "intercept-handoff",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A defender intercepts the disc and hands it to a team-mate to throw. Is that allowed?",
+      "answer": "No: the player who intercepts must keep possession",
+      "wrong": [
+        "Yes: any player may pick up after a turnover",
+        "Yes, if they do it within ten seconds",
+        "Only if the marker agrees"
+      ],
+      "rules": [
+        "13.5"
+      ]
+    },
+    {
+      "id": "handover",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The thrower hands the disc to a team-mate without ever letting go of it. What happens?",
+      "answer": "Turnover: a handover",
+      "wrong": [
+        "Play on",
+        "A travel infraction",
+        "The marker restarts the count at one"
+      ],
+      "rules": [
+        "13.2"
+      ]
+    },
+    {
+      "id": "self-catch",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The thrower throws, and catches their own pass before anyone else touches it. What happens?",
+      "answer": "Turnover: a self-catch",
+      "wrong": [
+        "Play on",
+        "A travel infraction",
+        "The pass is taken again"
+      ],
+      "rules": [
+        "13.2"
+      ]
+    },
+    {
+      "id": "pick-in-the-air",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A defender calls “Pick” while the pass is in the air, and the pass is completed. What happens?",
+      "answer": "Play stops once the receiver has it; if the defence think it affected the play, the disc goes back to the thrower",
+      "wrong": [
+        "The completion stands, always",
+        "Turnover",
+        "The point is replayed"
+      ],
+      "rules": [
+        "16.2",
+        "18.3"
+      ],
+      "why": "Play continues until possession is established."
+    },
+    {
+      "id": "pick-count",
+      "level": "hard",
+      "draft": true,
+      "prompt": "Play stops for an accepted pick. Where does the stall count restart?",
+      "answer": "At most six",
+      "wrong": [
+        "At one",
+        "At most nine",
+        "At eight"
+      ],
+      "rules": [
+        "9.5"
+      ],
+      "why": "After a pick, as after most calls, the count restarts at maximum six."
+    },
+    {
+      "id": "travel-play-on",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A defender calls “Travel” on the thrower. Does play stop?",
+      "answer": "No: the thrower re-establishes the correct pivot point, and the count pauses until they do",
+      "wrong": [
+        "Yes: play restarts with a check",
+        "Yes: it is a turnover",
+        "No, and the count carries on as normal"
+      ],
+      "rules": [
+        "18.2"
+      ]
+    },
+    {
+      "id": "travel-then-completed",
+      "level": "hard",
+      "draft": true,
+      "prompt": "After a travel is called, the thrower completes a pass before correcting their pivot. What can the defence do?",
+      "answer": "Call a travel violation: the disc goes back to the thrower",
+      "wrong": [
+        "Nothing: the completion stands",
+        "Take the disc: it is a turnover",
+        "Have the point replayed"
+      ],
+      "rules": [
+        "18.2"
+      ]
+    },
+    {
+      "id": "fast-count-incomplete",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The thrower calls “Fast count”, then throws, and the pass is incomplete. What happens?",
+      "answer": "The turnover stands",
+      "wrong": [
+        "The disc goes back to the thrower",
+        "The count restarts at one",
+        "The point is replayed"
+      ],
+      "rules": [
+        "18.1"
+      ],
+      "why": "A marking infraction has no consequence once the thrower throws."
+    },
+    {
+      "id": "offsetting-fouls",
+      "level": "hard",
+      "draft": true,
+      "prompt": "An offensive and a defensive player both call fouls on the same play, and both are accepted. What happens?",
+      "answer": "Offsetting fouls: the disc goes back to the last non-disputed thrower",
+      "wrong": [
+        "The offence keeps the disc where it is",
+        "The defence take it",
+        "The later call wins"
+      ],
+      "rules": [
+        "17.9"
+      ]
+    },
+    {
+      "id": "both-to-one-spot",
+      "level": "hard",
+      "draft": true,
+      "prompt": "Two opposing players run for the same spot at the same time and collide, with real force, before the disc arrives. What is it?",
+      "answer": "Offsetting fouls",
+      "wrong": [
+        "A foul on whoever arrived later",
+        "Not a foul: both were playing the disc",
+        "A dangerous play foul"
+      ],
+      "rules": [
+        "17.9"
+      ]
+    },
+    {
+      "id": "indirect-foul",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A defender bumps a cutter away from where the disc is going. The foul is accepted. What happens?",
+      "answer": "The fouled player may make up the position they lost",
+      "wrong": [
+        "The cutter gets the disc",
+        "The disc goes back to the thrower",
+        "Turnover"
+      ],
+      "rules": [
+        "17.8"
+      ],
+      "why": "An indirect foul does not touch the play on the disc."
+    },
+    {
+      "id": "dangerous-no-contact",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A player lays out recklessly into a crowd, but avoids touching anyone. Can a foul be called?",
+      "answer": "Yes: dangerous play is a foul whether or not there is contact",
+      "wrong": [
+        "No: there was no contact",
+        "Only if someone is hurt",
+        "Only the captains can call it"
+      ],
+      "rules": [
+        "17.1"
+      ]
+    },
+    {
+      "id": "follow-through",
+      "level": "hard",
+      "draft": true,
+      "prompt": "The thrower’s hand hits the marker during the follow-through, after the disc is gone. Is it a foul?",
+      "answer": "No: contact in the follow-through is not enough for a foul, though it should be avoided",
+      "wrong": [
+        "Yes: an offensive throwing foul",
+        "Yes: a defensive throwing foul",
+        "Only if the pass is incomplete"
+      ],
+      "rules": [
+        "17.7"
+      ]
+    },
+    {
+      "id": "misheard-call",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A player stops play after mishearing a call, and the other team keeps possession anyway. What happens?",
+      "answer": "The play stands",
+      "wrong": [
+        "The disc goes back to the thrower",
+        "The point is replayed",
+        "Turnover"
+      ],
+      "rules": [
+        "15.9"
+      ]
+    },
+    {
+      "id": "retracted",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A player calls a foul, then realises they were wrong and calls “Retracted”. What happens?",
+      "answer": "Play resumes as if the caller had committed the breach",
+      "wrong": [
+        "Play resumes as if no call was made",
+        "The disc goes back to the thrower",
+        "The point is replayed"
+      ],
+      "rules": [
+        "15.11"
+      ]
+    },
+    {
+      "id": "did-not-affect-goal",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A violation was called, but both teams agree it did not affect the play, which ended in a goal. What happens?",
+      "answer": "The goal stands",
+      "wrong": [
+        "The disc goes back to the thrower",
+        "The point is replayed",
+        "The goal is taken off"
+      ],
+      "rules": [
+        "16.3"
+      ]
+    },
+    {
+      "id": "injury-own",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A player is hurt with nobody else involved, and stops play. What must they do?",
+      "answer": "Be substituted, or charge their own team a time-out",
+      "wrong": [
+        "Nothing: injury stoppages are free",
+        "Leave the game for the rest of the half",
+        "Charge the other team a time-out"
+      ],
+      "rules": [
+        "19.1"
+      ]
+    },
+    {
+      "id": "injury-disc-in-air",
+      "level": "hard",
+      "draft": true,
+      "prompt": "An injury is called while a pass is in the air, and the pass is completed. The injury was not caused by a foul. What happens?",
+      "answer": "The completion stands, and play restarts there after the stoppage",
+      "wrong": [
+        "The disc goes back to the thrower",
+        "The point is replayed",
+        "Turnover"
+      ],
+      "rules": [
+        "19.1"
+      ]
+    },
+    {
+      "id": "defender-timeout",
+      "level": "hard",
+      "draft": true,
+      "prompt": "In the middle of a point, a defender forms a “T” and calls time-out. Is that allowed?",
+      "answer": "No: after the pull, only a thrower holding the disc can call a time-out",
+      "wrong": [
+        "Yes, once per half",
+        "Yes, if the disc is on the ground",
+        "Only the captain can"
+      ],
+      "rules": [
+        "20.3"
+      ]
+    },
+    {
+      "id": "contested-goal",
+      "level": "hard",
+      "draft": true,
+      "prompt": "A receiver calls “Goal”, the defence contests, and the players cannot agree what happened. What happens?",
+      "answer": "The disc goes back to the last non-disputed thrower",
+      "wrong": [
+        "The goal stands",
+        "The receiver keeps it on the goal line",
+        "The point is replayed"
+      ],
+      "rules": [
+        "1.12",
+        "14.2"
+      ]
+    }
+  ]
+}
