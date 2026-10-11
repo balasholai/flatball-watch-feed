@@ -1,6 +1,38 @@
 {
-  "version": "2026.10.06",
+  "version": "2026.10.11",
   "videos": [
+    {
+      "id": "return-to-ultimate-frisbee-do-this",
+      "title": "Return to Ultimate Frisbee: Do This",
+      "embedURL": "https://www.youtube.com/watch?v=cRIYFiGVVbA",
+      "platform": "youtube",
+      "category": "strategy",
+      "durationSeconds": 121,
+      "dateAdded": "2026-10-11",
+      "description": "🥏 Ultimate Frisbee Training Program:",
+      "creator": "Brian Nevison"
+    },
+    {
+      "id": "how-to-use-the-hesitation-move-in-ultimate-frisbee",
+      "title": "How to Use the Hesitation Move in Ultimate Frisbee",
+      "embedURL": "https://www.youtube.com/watch?v=wXxwI8fXXxs",
+      "platform": "youtube",
+      "category": "strategy",
+      "durationSeconds": 63,
+      "dateAdded": "2026-10-11",
+      "creator": "Eric Deng – That Ultimate Coach 🥏"
+    },
+    {
+      "id": "learn-this-trick-throw",
+      "title": "Learn This Trick Throw",
+      "embedURL": "https://www.youtube.com/watch?v=hxKkMN_tazs",
+      "platform": "youtube",
+      "category": "strategy",
+      "durationSeconds": 60,
+      "dateAdded": "2026-10-11",
+      "description": "Do you want to be an elite thrower?",
+      "creator": "Rowan McDonnell"
+    },
     {
       "id": "universe-point-slow-vs-sprocket-northeast-regionals-2nd-plac",
       "title": "Universe Point: Slow vs. Sprocket - Northeast Regionals 2nd Place Final",
