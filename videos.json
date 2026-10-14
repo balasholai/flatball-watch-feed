@@ -1,6 +1,17 @@
 {
-  "version": "2026.10.11",
+  "version": "2026.10.14",
   "videos": [
+    {
+      "id": "this-one-point-at-frisbee-worlds-had-everything",
+      "title": "This ONE Point at Frisbee Worlds Had EVERYTHING?!",
+      "embedURL": "https://www.youtube.com/watch?v=8r8XPQGdwBs",
+      "platform": "youtube",
+      "category": "highlight",
+      "durationSeconds": 220,
+      "dateAdded": "2026-10-14",
+      "description": "The 2026 World Ultimate Club Championships gave us some incredible frisbee moments, but this point between Sunder and Iznogood might have been the WILDEST of…",
+      "creator": "Ulti Von"
+    },
     {
       "id": "return-to-ultimate-frisbee-do-this",
       "title": "Return to Ultimate Frisbee: Do This",
